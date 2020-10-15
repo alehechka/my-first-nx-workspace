@@ -29,7 +29,7 @@
     "postgit": "git push"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": [
+    "*.{ts,tsx}": [
       "yarn lint"
     ]
   },
