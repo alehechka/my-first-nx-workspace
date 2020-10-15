@@ -31,8 +31,7 @@
   "lint-staged": {
     "{apps,libs}/**/*.{ts,json,tsx}": [
       "yarn affected:lint  -- --uncommitted --fix --parallel",
-      "yarn format:write -- --uncommitted",
-      "git add"
+      "yarn format:write -- --uncommitted"
     ]
   },
   "husky": {
