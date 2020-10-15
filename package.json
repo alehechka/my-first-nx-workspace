@@ -29,8 +29,10 @@
     "postgit": "git push"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "yarn lint"
+    "{apps,libs}/**/*.{ts,json,tsx}": [
+      "yarn affected:lint  -- --uncommitted --fix --parallel",
+      "yarn format:write -- --uncommitted",
+      "git add"
     ]
   },
   "husky": {

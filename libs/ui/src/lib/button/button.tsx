@@ -1,20 +1,13 @@
 import React from 'react';
+import StyledButton from './styled';
 
-import styled from 'styled-components';
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  label?: string;
+}
 
-/* eslint-disable-next-line */
-export interface ButtonProps {}
-
-const StyledButton = styled.div`
-  color: pink;
-`;
-
-export const Button = (props: ButtonProps) => {
-  return (
-    <StyledButton>
-      <h1>Welcome to Button!</h1>
-    </StyledButton>
-  );
+export const Button = ({ label, children, ...otherProps }: ButtonProps) => {
+  return <StyledButton {...otherProps}>{label || children}</StyledButton>;
 };
 
 export default Button;

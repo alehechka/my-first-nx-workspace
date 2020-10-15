@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-
+import { Button } from '@alehechka/ui';
 import { ReactComponent as Logo } from './logo.svg';
 import star from './star.svg';
 
@@ -146,6 +146,7 @@ export const App = () => {
         <Logo width="75" height="75" />
         <h1>Welcome to movie-client!</h1>
       </header>
+      <Button label="Press me" disabled />
       <main>
         <h2>Resources &amp; Tools</h2>
         <p>Thank you for using and showing some ♥ for Nx.</p>
