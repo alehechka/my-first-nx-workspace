@@ -1,15 +1,19 @@
 import React from 'react';
 
-import './button.css';
+import styled from 'styled-components';
 
 /* eslint-disable-next-line */
 export interface ButtonProps {}
 
+const StyledButton = styled.div`
+  color: pink;
+`;
+
 export const Button = (props: ButtonProps) => {
   return (
-    <div>
-      <h1>Welcome to button!</h1>
-    </div>
+    <StyledButton>
+      <h1>Welcome to Button!</h1>
+    </StyledButton>
   );
 };
 
