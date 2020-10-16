@@ -32,7 +32,7 @@ export default styled.button<ButtonProps>`
     transform: scale(0.99);
   }
   &:disabled {
-    cursor: not-allowed;
+    cursor: ${({ loading }) => (loading ? 'progress' : 'not-allowed')};
     background: #b3d5ff;
   }
 `;
