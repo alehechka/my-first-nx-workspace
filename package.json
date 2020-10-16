@@ -29,14 +29,16 @@
     "postgit": "git push"
   },
   "lint-staged": {
-    "{apps}/**/*.{ts,json,tsx}": [
+    "{apps,libs}/**/*.{ts,json,tsx}": [
       "yarn affected:lint  -- --uncommitted --fix --parallel",
       "yarn format:write -- --uncommitted"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": [
+        
+      ]
     }
   },
   "private": true,

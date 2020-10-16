@@ -19,6 +19,9 @@ export interface ButtonProps
    * Asynchronous callback function to resolve when button is clicked.
    */
   onAsyncClick?: (event: MouseEvent) => Promise<string>;
+  /**
+   * Override to onAsyncClick loading state to render loading button from state.
+   */
   loading?: boolean;
 }
 
