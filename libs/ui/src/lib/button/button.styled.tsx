@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { ButtonProps } from './button';
 
 export default styled.button<ButtonProps>`
@@ -35,4 +35,29 @@ export default styled.button<ButtonProps>`
     cursor: ${({ loading }) => (loading ? 'progress' : 'not-allowed')};
     background: #b3d5ff;
   }
+`;
+
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const Spinner = styled.div`
+  animation: ${rotate360} 1s linear infinite;
+
+  box-sizing: border-box;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 2px solid grey;
+  border-top-color: #000;
+  margin-left: -10px;
+  margin-top: -18px;
 `;

@@ -29,7 +29,7 @@
     "postgit": "git push"
   },
   "lint-staged": {
-    "{apps,libs}/**/*.{ts,json,tsx}": [
+    "{apps}/**/*.{ts,json,tsx}": [
       "yarn affected:lint  -- --uncommitted --fix --parallel",
       "yarn format:write -- --uncommitted"
     ]

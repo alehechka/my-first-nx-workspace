@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react';
-import StyledButton from './styled';
+import StyledButton, { Spinner } from './button.styled';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -30,7 +30,7 @@ export const Button = ({
   children,
   onClick,
   onAsyncClick,
-  loading,
+  loading = false,
   disabled,
   ...otherProps
 }: ButtonProps) => {
@@ -40,13 +40,12 @@ export const Button = ({
     setAsyncError(undefined);
     setAsyncSuccess(undefined);
   };
-  const [asyncLoading, setAsyncLoading] = React.useState(false);
+  const [asyncLoading, setAsyncLoading] = React.useState<boolean>(loading);
   return (
     <>
       <StyledButton
-        loading={loading || asyncLoading}
+        loading={asyncLoading}
         disabled={disabled || asyncLoading}
-        {...otherProps}
         onClick={
           onAsyncClick
             ? (e: MouseEvent) => {
@@ -59,8 +58,10 @@ export const Button = ({
               }
             : onClick
         }
+        {...otherProps}
       >
         {label || children}
+        {asyncLoading && <Spinner />}
       </StyledButton>
       {asyncSuccess && <div>{asyncSuccess}</div>}
       {asyncError && <div>{asyncError}</div>}
