@@ -32,7 +32,7 @@ export default styled.button<ButtonProps>`
     transform: scale(0.99);
   }
   &:disabled {
-    cursor: ${({ loading }) => (loading ? 'progress' : 'not-allowed')};
+    cursor: ${({ isLoading }) => (isLoading ? 'progress' : 'not-allowed')};
     background: #b3d5ff;
   }
 `;
@@ -60,4 +60,8 @@ export const Spinner = styled.div`
   border-top-color: #000;
   margin-left: -0.5rem;
   margin-top: -1rem;
+`;
+
+export const AsyncMessage = styled.div<ButtonProps>`
+  text-align: ${({ align }) => align};
 `;
