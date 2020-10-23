@@ -4,7 +4,7 @@ import { ButtonProps } from './button';
 export default styled.button<ButtonProps>`
   display: inline-block;
   border: none;
-  padding: 1rem 2rem;
+  padding: 0.7rem 1rem;
   margin: 0;
   text-decoration: none;
   background: #0069ed;
@@ -51,13 +51,13 @@ export const Spinner = styled.div`
 
   box-sizing: border-box;
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 1rem;
+  height: 1rem;
   top: 50%;
   left: 50%;
   border-radius: 50%;
   border: 2px solid grey;
   border-top-color: #000;
-  margin-left: -10px;
-  margin-top: -18px;
+  margin-left: -0.5rem;
+  margin-top: -1rem;
 `;

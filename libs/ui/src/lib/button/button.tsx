@@ -8,10 +8,6 @@ export interface ButtonProps
    */
   label?: string;
   /**
-   * Determines if button is disabled and unusable.
-   */
-  disabled?: boolean;
-  /**
    * Callback function to run when button is clicked.
    */
   onClick?: (event: MouseEvent) => void;
