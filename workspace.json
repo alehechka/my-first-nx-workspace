@@ -150,6 +150,77 @@
           }
         }
       }
+    },
+    "movie-server": {
+      "root": "apps/movie-server",
+      "sourceRoot": "apps/movie-server/src",
+      "projectType": "application",
+      "prefix": "movie-server",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/movie-server",
+            "main": "apps/movie-server/src/main.ts",
+            "tsConfig": "apps/movie-server/tsconfig.app.json",
+            "assets": ["apps/movie-server/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/movie-server/src/environments/environment.ts",
+                  "with": "apps/movie-server/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "movie-server:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/movie-server/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/movie-server/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "movie-interfaces": {
+      "root": "libs/movie-interfaces",
+      "sourceRoot": "libs/movie-interfaces/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/movie-interfaces/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/movie-interfaces/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

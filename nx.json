@@ -35,6 +35,12 @@
     },
     "ui": {
       "tags": []
+    },
+    "movie-server": {
+      "tags": []
+    },
+    "movie-interfaces": {
+      "tags": []
     }
   }
 }

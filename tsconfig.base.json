@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@alehechka/ui": ["libs/ui/src/index.ts"]
+      "@alehechka/ui": ["libs/ui/src/index.ts"],
+      "@alehechka/movie-interfaces": ["libs/movie-interfaces/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
