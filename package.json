@@ -50,6 +50,7 @@
     "pg": "^8.4.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-form-hook": "^0.0.1",
     "react-is": "16.13.1",
     "styled-components": "5.1.1",
     "type-graphql": "^1.1.0",

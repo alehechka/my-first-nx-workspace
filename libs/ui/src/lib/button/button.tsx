@@ -1,5 +1,6 @@
 import React, { MouseEvent } from 'react';
-import StyledButton, { Spinner } from './button.styled';
+import StyledButton, { Spinner, AsyncMessage } from './button.styled';
+import { Container } from '../container';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,10 +8,6 @@ export interface ButtonProps
    * Label of button, can be used instead of wrapping children.
    */
   label?: string;
-  /**
-   * Determines if button is disabled and unusable.
-   */
-  disabled?: boolean;
   /**
    * Callback function to run when button is clicked.
    */
@@ -22,7 +19,12 @@ export interface ButtonProps
   /**
    * Override to onAsyncClick loading state to render loading button from state.
    */
-  loading?: boolean;
+  isLoading?: boolean;
+  /**
+   * When true, any async messages will not be displayed.
+   */
+  hideAsyncMessage?: boolean;
+  align?: 'left' | 'right';
 }
 
 export const Button = ({
@@ -30,8 +32,11 @@ export const Button = ({
   children,
   onClick,
   onAsyncClick,
-  loading = false,
+  isLoading = false,
   disabled,
+  hideAsyncMessage = false,
+  align = 'right',
+  hidden,
   ...otherProps
 }: ButtonProps) => {
   const [asyncSuccess, setAsyncSuccess] = React.useState<string | undefined>();
@@ -40,11 +45,11 @@ export const Button = ({
     setAsyncError(undefined);
     setAsyncSuccess(undefined);
   };
-  const [asyncLoading, setAsyncLoading] = React.useState<boolean>(loading);
+  const [asyncLoading, setAsyncLoading] = React.useState<boolean>(isLoading);
   return (
-    <>
+    <Container hidden={hidden}>
       <StyledButton
-        loading={asyncLoading}
+        isLoading={asyncLoading}
         disabled={disabled || asyncLoading}
         onClick={
           onAsyncClick
@@ -58,14 +63,23 @@ export const Button = ({
               }
             : onClick
         }
+        align={align}
         {...otherProps}
       >
         {label || children}
         {asyncLoading && <Spinner />}
       </StyledButton>
-      {asyncSuccess && <div>{asyncSuccess}</div>}
-      {asyncError && <div>{asyncError}</div>}
-    </>
+      {!hideAsyncMessage && (
+        <>
+          {asyncSuccess && (
+            <AsyncMessage align={align}>{asyncSuccess}</AsyncMessage>
+          )}
+          {asyncError && (
+            <AsyncMessage align={align}>{asyncError}</AsyncMessage>
+          )}
+        </>
+      )}
+    </Container>
   );
 };
 
