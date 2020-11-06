@@ -6,7 +6,7 @@ export const App = () => {
   const [hidden, setHidden] = React.useState(false);
   return (
     <>
-      <Input />
+      <Input name='input' label='Input' required />
       {/* <br /> */}
       <Button
         label='Async'
