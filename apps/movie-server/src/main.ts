@@ -1,18 +1,26 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
+import { ApolloServer } from 'apollo-server-express';
+import express from 'express';
+import 'reflect-metadata';
+import { buildSchema } from 'type-graphql';
+import { TestResolver } from './app/resolvers/TestResolver';
 
-import * as express from 'express';
+const server = async () => {
+  const app = express();
 
-const app = express();
+  const apolloServer = new ApolloServer({
+    schema: await buildSchema({
+      resolvers: [TestResolver],
+      validate: false,
+    }),
+    context: ({ req, res }) => ({ req, res }),
+  });
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to movie-server!' });
-});
+  apolloServer.applyMiddleware({ app, cors: false });
 
-const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
+  const port = process.env.PORT || 4000;
+  app.listen(port, () => {
+    console.log(`server started at http://localhost:${port}/graphql`);
+  });
+};
+
+void server();

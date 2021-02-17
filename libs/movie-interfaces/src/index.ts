@@ -1,1 +1,1 @@
-export * from './lib/movie-interfaces';
+export * from './lib';
